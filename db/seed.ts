@@ -50,7 +50,12 @@ async function upsertPublishers(db: Database, names: string[]): Promise<Map<stri
     return map;
 }
 
-/** Seed the database from the games CSV. Idempotent: skips existing games by title. */
+/**
+ * Seeds the database from the games CSV.
+ * @param db - Injectable database client used by scripts (real SQLite) and tests (in-memory libSQL).
+ * @param csvPath - Optional absolute path to the CSV source file.
+ * @returns Resolves when all categories, publishers, and games have been inserted or matched.
+ */
 export async function seedDatabase(db: Database, csvPath: string = join(here, 'games.csv')): Promise<void> {
     const rows = parseGamesCsv(readFileSync(csvPath, 'utf-8'));
 
@@ -73,7 +78,10 @@ export async function seedDatabase(db: Database, csvPath: string = join(here, 'g
 }
 
 // Allow running directly: `tsx db/seed.ts`
-if (import.meta.url === `file://${process.argv[1]}`) {
+const isDirectRun = process.argv[1] !== undefined
+    && fileURLToPath(import.meta.url) === process.argv[1];
+
+if (isDirectRun) {
     const db = createDatabase();
     seedDatabase(db)
         .then(() => {
