@@ -20,6 +20,13 @@ Refer to technology-specific instruction files:
 
 ## Core Principles
 
+### Comments and Documentation
+
+- Comment **intent and decisions** (`why`), not mechanics (`what` the code already says).
+- Do not add comments that simply paraphrase the next line of code.
+- When behavior is non-obvious, document the constraint, tradeoff, or rationale that drove the implementation.
+- Treat outdated comments as bugs: update or remove them in the same change that updates the code.
+
 ### Testability
 
 - Every interactive element MUST include a `data-testid` attribute
