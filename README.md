@@ -9,6 +9,7 @@ Tailspin Toys is a crowdfunding platform for games with a developer theme. The p
 - **Tailwind CSS v4** — styling via utility classes (dark theme).
 - **Vitest** — unit tests for the data layer and pure transforms.
 - **Playwright** — end-to-end tests run against the built static site.
+- **Homepage filtering** — users can filter the game grid by one-or-more categories and a single publisher, including combined filters.
 
 The database is migrated and seeded automatically before `dev`/`build` (via the `predev`/`prebuild` npm scripts) and is written to `.data/` (gitignored).
 
