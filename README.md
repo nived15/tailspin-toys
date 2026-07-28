@@ -103,6 +103,15 @@ npm run typecheck:all    # both of the above
 > [!NOTE]
 > The native compiler is used only for type checking (`--noEmit`); the site is still built by `astro build` (Vite/esbuild). The classic `typescript` package stays on v6 until `typescript-eslint` and `@astrojs/check` support the native API (~TS 7.1); a Dependabot `ignore` in `.github/dependabot.yml` holds the classic `typescript@7` bump until then.
 
+## Triage Kanban Canvas
+
+The repository ships a **Triage board** Copilot canvas extension (`.github/extensions/triage-kanban/`) that lets any team member open an interactive Kanban board of the repo's open issues directly inside Copilot CLI.
+
+- The board surfaces the **three highest-priority issues** first (with a content summary and justification for the ranking), followed by the full backlog.
+- Each card has an **"Add to session context"** button that injects the issue — including its full acceptance criteria — into the current Copilot session so you can start working on it straight away.
+
+The extension is automatically loaded by Copilot CLI from `.github/extensions/` — no manual installation step is needed.
+
 ## Copilot Agents & Skills
 
 This project ships Copilot customizations to assist with quality assurance:
